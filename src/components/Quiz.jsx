@@ -8,9 +8,7 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
   const currentQuestion = quizData.questions[currentQuestionIndex];
   const answeredCount = answers.filter(answer => answer !== null).length;
 
-  // Timer effect
   useEffect(() => {
-    // Load saved time from localStorage
     const savedTime = localStorage.getItem('quiz_time_remaining');
     if (savedTime) {
       setTimeRemaining(parseInt(savedTime));
@@ -29,21 +27,19 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);  // Load current question index from answers only on initial load
-  useEffect(() => {
+  }, []); 
+  useEffet(() => {
     const lastAnsweredIndex = answers.findIndex(answer => answer === null);
     if (lastAnsweredIndex !== -1) {
       setCurrentQuestionIndex(lastAnsweredIndex);
     }
-  }, []); // Remove answers dependency to prevent constant updates
+  }, []); 
 
-  // Check if quiz is complete when answers change
   useEffect(() => {
     if (answers.every(answer => answer !== null) && answers.length === quizData.questions.length) {
-      // All questions answered, complete the quiz
       setTimeout(() => {
         handleQuizComplete();
-      }, 1500); // Small delay to show the last answer
+      }, 1500); 
     }
   }, [answers]);
 
@@ -53,17 +49,14 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
   };  const handleAnswerSelect = (answer) => {
     setSelectedAnswer(answer);
     
-    // Save answer
     onAnswer(currentQuestionIndex, answer);
     
     setTimeout(() => {
       if (currentQuestionIndex < quizData.questions.length - 1) {
-        // Move to next question
         setCurrentQuestionIndex(prev => prev + 1);
         setSelectedAnswer(null);
       }
-      // Don't call handleQuizComplete here, let the useEffect handle it
-    }, 1000); // Brief delay to show selected answer
+    }, 1000); 
   };
 
   const handleQuizComplete = () => {
@@ -109,7 +102,6 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
 
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-      {/* Quiz Header */}
       <div className="flex justify-between items-center mb-8 p-4 bg-gray-50 rounded-lg">
         <div className="flex items-center space-x-6">
           <div className="text-sm font-medium text-gray-600">
@@ -124,7 +116,6 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
         </div>
       </div>
 
-      {/* Progress Bar */}
       <div className="mb-8">
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div 
@@ -134,7 +125,6 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
         </div>
       </div>
 
-      {/* Question */}
       <div className="mb-8">
         <div className="flex items-center mb-4">
           <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
@@ -154,7 +144,6 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
         </h2>
       </div>
 
-      {/* Answer Options */}
       <div className="space-y-4">
         {currentQuestion.all_answers.map((answer, index) => (
           <button
@@ -183,7 +172,6 @@ const Quiz = ({ quizData, answers, onAnswer, onComplete }) => {
         ))}
       </div>
 
-      {/* Skip Button (for debugging/testing) */}
       <div className="mt-8 text-center">
         <button
           onClick={() => handleAnswerSelect(null)}

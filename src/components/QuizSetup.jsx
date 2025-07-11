@@ -8,7 +8,7 @@ const QuizSetup = ({ onStartQuiz }) => {
     category: '',
     difficulty: '',
     type: '',
-    timeLimit: 300 // 5 minutes default
+    timeLimit: 300
   });
 
   const categories = [
@@ -79,7 +79,6 @@ const QuizSetup = ({ onStartQuiz }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {/* Number of Questions */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Number of Questions
@@ -94,7 +93,6 @@ const QuizSetup = ({ onStartQuiz }) => {
           />
         </div>
 
-        {/* Time Limit */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Time Limit (seconds)
@@ -109,7 +107,6 @@ const QuizSetup = ({ onStartQuiz }) => {
           />
         </div>
 
-        {/* Category */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Category
@@ -125,7 +122,6 @@ const QuizSetup = ({ onStartQuiz }) => {
           </select>
         </div>
 
-        {/* Difficulty */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Difficulty
@@ -141,7 +137,6 @@ const QuizSetup = ({ onStartQuiz }) => {
           </select>
         </div>
 
-        {/* Question Type */}
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Question Type

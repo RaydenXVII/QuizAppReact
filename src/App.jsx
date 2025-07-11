@@ -19,7 +19,6 @@ function App() {
   const [quizAnswers, setQuizAnswers] = useState([]);
   const [quizResults, setQuizResults] = useState(null);
 
-  // Load saved state from localStorage on app start
   useEffect(() => {
     const savedUser = localStorage.getItem(STORAGE_KEYS.USER);
     const savedQuizState = localStorage.getItem(STORAGE_KEYS.QUIZ_STATE);
@@ -50,7 +49,6 @@ function App() {
     setQuizAnswers(new Array(quiz.questions.length).fill(null));
     setCurrentScreen('quiz');
     
-    // Save to localStorage
     localStorage.setItem(STORAGE_KEYS.QUIZ_STATE, JSON.stringify(quiz));
     localStorage.setItem(STORAGE_KEYS.QUIZ_ANSWERS, JSON.stringify(new Array(quiz.questions.length).fill(null)));
   };
@@ -60,7 +58,6 @@ function App() {
     newAnswers[questionIndex] = answer;
     setQuizAnswers(newAnswers);
     
-    // Save to localStorage
     localStorage.setItem(STORAGE_KEYS.QUIZ_ANSWERS, JSON.stringify(newAnswers));
   };
 
@@ -68,7 +65,6 @@ function App() {
     setQuizResults(results);
     setCurrentScreen('results');
     
-    // Clear saved quiz state
     localStorage.removeItem(STORAGE_KEYS.QUIZ_STATE);
     localStorage.removeItem(STORAGE_KEYS.QUIZ_ANSWERS);
     localStorage.removeItem(STORAGE_KEYS.QUIZ_TIME);
@@ -82,7 +78,6 @@ function App() {
   };
 
   const handleLogout = () => {
-    // Clear all data
     localStorage.removeItem(STORAGE_KEYS.USER);
     localStorage.removeItem(STORAGE_KEYS.QUIZ_STATE);
     localStorage.removeItem(STORAGE_KEYS.QUIZ_ANSWERS);

@@ -29,11 +29,9 @@ const QuizResult = ({ results, onRestart }) => {
         <p className="text-xl text-gray-600">{getScoreMessage(results.score)}</p>
       </div>
 
-      {/* Score Circle */}
       <div className="flex justify-center mb-8">
         <div className="relative w-32 h-32">
           <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-            {/* Background circle */}
             <circle
               cx="50"
               cy="50"
@@ -42,7 +40,6 @@ const QuizResult = ({ results, onRestart }) => {
               strokeWidth="8"
               fill="none"
             />
-            {/* Progress circle */}
             <circle
               cx="50"
               cy="50"
@@ -63,7 +60,6 @@ const QuizResult = ({ results, onRestart }) => {
         </div>
       </div>
 
-      {/* Results Breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
           <div className="text-3xl font-bold text-green-600 mb-2">{results.correct}</div>
@@ -90,7 +86,6 @@ const QuizResult = ({ results, onRestart }) => {
         </div>
       </div>
 
-      {/* Summary Stats */}
       <div className="bg-gray-50 rounded-lg p-6 mb-8">
         <h3 className="text-lg font-semibold text-gray-800 mb-4">Quiz Summary</h3>
         <div className="space-y-2 text-sm text-gray-600">
