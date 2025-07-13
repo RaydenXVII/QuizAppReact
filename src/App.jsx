@@ -28,7 +28,6 @@ function App() {
       setUser(JSON.parse(savedUser));
       
       if (savedQuizState && savedAnswers) {
-        // Resume quiz
         setQuizData(JSON.parse(savedQuizState));
         setQuizAnswers(JSON.parse(savedAnswers));
         setCurrentScreen('quiz');
@@ -93,7 +92,6 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         {user && (
           <header className="mb-8 flex justify-between items-center bg-white rounded-lg shadow-md p-4">
             <div>
@@ -109,7 +107,6 @@ function App() {
           </header>
         )}
 
-        {/* Main Content */}
         {currentScreen === 'login' && (
           <LoginForm onLogin={handleLogin} />
         )}

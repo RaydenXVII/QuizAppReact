@@ -108,7 +108,6 @@ const QuizResult = ({ results, onRestart }) => {
         </div>
       </div>
 
-      {/* Performance Badge */}
       <div className="text-center mb-8">
         <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium ${
           results.score >= 90 ? 'bg-yellow-100 text-yellow-800' :
@@ -125,7 +124,6 @@ const QuizResult = ({ results, onRestart }) => {
         </div>
       </div>
 
-      {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4">
         <button
           onClick={onRestart}
